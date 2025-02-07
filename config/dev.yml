@@ -1,0 +1,45 @@
+app:
+  env: dev
+  name: go-server
+  http:
+    host: 127.0.0.1
+    port: 9000
+
+security:
+  api_sign:
+    app_key: 123456
+    app_security: 123456
+  jwt:
+    key: hfudhjg74fe314
+
+data:
+  mysql:
+    master:
+      dsn: root:123456@tcp(localhost:3306)/demo_db?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai
+      max_open: 100
+      max_idle: 10
+      max_life_time: 300000000000 # 300s 内可复用
+    slave:
+      dsn: root:123456@tcp(localhost:3306)/demo_db?charset=utf8mb4&parseTime=True&loc=Asia%2FShanghai
+      max_open: 100
+      max_idle: 10
+      max_life_time: 300000000000 # 300s 内可复用
+
+  redis:
+    addr: 192.168.1.102:6379
+    password: ""
+    db: 0
+    read_timeout: 500 # 单位毫秒
+    write_timeout: 500  # 单位毫秒
+
+
+log:
+  log_level: debug
+  encoding: console           # json or console
+  log_file_name: "./storage/logs/server.log"
+  max_backups: 30              # 日志文件最多保存多少个备份
+  max_age: 7                   #  文件最多保存多少天
+  max_size: 64               #  每个日志文件保存的最大尺寸 单位：M
+  compress: true               # 是否压缩
+
+
